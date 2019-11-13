@@ -51,12 +51,14 @@
 			  	</ul>
 			  </li>
 			  <li class="divider"></li>
-			  <li><a href="javascript:showFuction('/admin/users')">用户管理</a></li>
+			  <li><a href="javascript:showFuction('/admin/users')">用户管理</a></li> 
 			</ul>
 		</div>
 	</div>
 	<div class="col-md-10"  style=" min-height:500px; border-left: solid">
-		<div id="content"></div>
+		<div id="content">
+			
+		</div>
 	</div>
 </div>
 

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <!-- 别名配置 -->
  <typeAliases>
     <!-- todo -->
-   <package name="com.wuyubin.bean"/>
+   <package name="com.wuyubin.entity"/>
    <!-- todo -->
    <package name="com.wuyubin.vo"/>
  </typeAliases>
