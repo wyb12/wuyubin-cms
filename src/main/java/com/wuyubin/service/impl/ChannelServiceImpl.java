@@ -11,7 +11,7 @@ import com.wuyubin.service.ChannelService;
 
 /**
  * 
- * @author zhuzg
+ * @author 吴宇斌
  *
  */
 

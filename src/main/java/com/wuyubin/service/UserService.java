@@ -22,4 +22,26 @@ public interface UserService {
 	 */
 	int updateStatus(Integer userId, int status);
 
+	/**
+	 * 根据据用户名查找用户
+	 * @param username
+	 * @return
+	 */
+	User findByName(String username);
+
+	/**
+	 * 注册用户
+	 * @param user
+	 * @return
+	 */
+	int register(User user);
+
+	/**
+	 * 登录
+	 * @param user
+	 * @return
+	 */
+	User login(User user);
+	
+
 }

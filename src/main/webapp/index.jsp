@@ -24,9 +24,14 @@
 	
 </style>
 
+<audio src="/resource/audio/jmszl.mp3"  autoplay="autoplay"> </audio>	
+<bgsound src="/resource/audio/jmszl.mp3" loop="-1">
+
 </head>
 
 <body>
+<audio src="/resource/audio/jmszl.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto"></audio>
+<audio autoplay="" loop=""><source src="/resource/audio/jmszl.mp3"></audio>
 <!-- 导航条 -->
 <nav class="navbar navbar-default">
  

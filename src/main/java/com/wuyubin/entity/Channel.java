@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 频道的实体bean
- * @author zhuzg
+ * @author 吴宇斌
  *
  */
 public class Channel  implements Serializable {

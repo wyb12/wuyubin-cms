@@ -7,7 +7,7 @@ import com.wuyubin.common.ConstantClass;
 
 /**
  * 
- * @author zhuzg
+ * @author 吴宇斌
  *
  */
 public class User implements Serializable {

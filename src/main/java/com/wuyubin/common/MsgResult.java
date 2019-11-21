@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 用于前后端交互的协议
- * @author zhuzg
+ * @author 吴宇斌
  *
  */
 public class MsgResult implements Serializable {
