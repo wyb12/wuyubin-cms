@@ -9,6 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="channelId" column="channel_id"/>
 		<result property="categoryId" column="category_id"/>
 		<result property="userId" column="user_id"/>
+		<result property="articleType" column="articleType" 
+		   typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+			jdbcType="INTEGER" javaType="com.wuyubin.entity.TypeEnum"
+		/>
+		
 		<association property="user" column="user_id" select="com.wuyubin.dao.UserMapper.findUserById"></association>
 		<association property="channel" column="channel_id" select="com.wuyubin.dao.ChannelMapper.findById"></association>
 		<association property="category" column="category_id" select="com.wuyubin.dao.CategoryMapper.findById"></association>
@@ -21,11 +26,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="hostList" resultMap="articleMapper" >
-		SELECT id,title,picture,channel_id,category_id,user_id,hits,commentCnt,created
+		SELECT id,title,picture,channel_id,category_id,user_id,hits,commentCnt,created,articleType
 			FROM cms_article 
 			WHERE deleted=0 AND status=1 AND hot=1
 			ORDER BY created DESC 
 	</select>
+	
+	<!-- 获取图片文章 -->
+	<select id="getImgArticles" resultMap="articleMapper" >
+		SELECT id,title,picture,channel_id,category_id,user_id,hits,commentCnt,created,articleType
+			FROM cms_article 
+			WHERE deleted=0 AND status=1 AND articleType=1
+			ORDER BY created DESC 
+			LIMIT #{value}
+	</select>
+	
 	
 	<select id="getById" resultMap="articleMapper">
 		SELECT * FROM cms_article 
@@ -33,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="listByCat" resultMap="articleMapper">
-		SELECT id,title,picture,channel_id,category_id,user_id,hits,commentCnt,created
+		SELECT id,title,picture,channel_id,category_id,user_id,hits,commentCnt,created,articleType
 			FROM cms_article 
 			WHERE deleted=0 AND status=1 AND channel_id=#{chnId}
 			<if test=" categoryId!=0 ">

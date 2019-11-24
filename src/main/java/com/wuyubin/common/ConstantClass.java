@@ -2,7 +2,7 @@ package com.wuyubin.common;
 
 /**
  * 用于保存CMS系统的常量
- * @author zhuzg
+ * @author 吴宇斌
  *
  */
 public class ConstantClass {

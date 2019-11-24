@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import com.wuyubin.common.ConstantClass;
 import com.wuyubin.dao.ArticleMapper;
 import com.wuyubin.entity.Article;
+import com.wuyubin.entity.Comment;
 import com.wuyubin.service.ArticleService;
 
 /**
@@ -122,6 +123,42 @@ public class ArticleServiceImpl  implements ArticleService{
 	public int update(Article article) {
 		// TODO Auto-generated method stub
 		return articleMapper.update(article);
+	}
+
+	@Override
+	public int faverite(Integer userId, int articleId) {
+		// TODO Auto-generated method stub
+		return articleMapper.favorite(userId,articleId);
+	}
+
+	@Override
+	public List<Article> getImgArticles(int num) {
+		// TODO Auto-generated method stub
+		return articleMapper.getImgArticles(num);
+	}
+
+	@Override
+	public int comment(Integer userId, int articleId, String content) {
+		// TODO Auto-generated method stub
+		
+		//插入评论表一条数据
+		int result = articleMapper.addComment(userId, articleId, content);
+		if(result>0) {
+			// 让文章表中的评论数量自增1
+			articleMapper.increaseCommentCnt(articleId);
+		}else {
+			return 0;
+		}
+		return result;
+		
+	}
+
+	@Override
+	public PageInfo<Comment> commentlist(int articleId, int page) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(page,10);
+		
+		return new PageInfo<Comment>(articleMapper.commentlist(articleId));
 	}
 
 }

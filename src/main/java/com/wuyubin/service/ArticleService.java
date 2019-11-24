@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.wuyubin.entity.Article;
+import com.wuyubin.entity.Comment;
 
 public interface ArticleService {
 
@@ -108,6 +109,30 @@ public interface ArticleService {
 	 * @return
 	 */
 	int update(Article article);
+
+	/**
+	 * 收藏文章
+	 * @param userId
+	 * @param articleId
+	 * @return
+	 */
+	int faverite(Integer userId, int articleId);
+
+	/**
+	 * 获取最新的10篇图片文章
+	 * @param i 个数
+	 * @return
+	 */
+	List<Article> getImgArticles(int i);
+
+	int comment(Integer userId, int articleId, String content);
+
+	/*{*
+	 * 获取评论
+	 */
+	PageInfo<Comment> commentlist(int articleId, int page);
+	
+	
 	
 
 }
