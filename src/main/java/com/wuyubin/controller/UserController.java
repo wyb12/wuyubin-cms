@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,9 @@ import com.wuyubin.service.UserService;
 @Controller
 @RequestMapping("user")
 public class UserController {
+	
+	@Autowired
+	private RedisTemplate template;
 	
 	Logger log = Logger.getLogger(UserController.class);
 	
@@ -184,6 +188,9 @@ public class UserController {
 	 */
 	@GetMapping("updateArticle")
 	public String updateArticle(HttpServletRequest request,int id) {
+		
+		//先删除redis中list
+		template.delete("hot_articles");
 		
 		// 获取文章的详情 用于回显
 		Article article = articleService.getDetailById(id);

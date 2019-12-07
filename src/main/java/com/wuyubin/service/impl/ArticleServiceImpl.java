@@ -3,6 +3,7 @@ package com.wuyubin.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -23,6 +24,8 @@ public class ArticleServiceImpl  implements ArticleService{
 	
 	@Autowired
 	ArticleMapper articleMapper;
+	@Autowired
+	private RedisTemplate template;
 	
 
 	@Override
@@ -31,11 +34,24 @@ public class ArticleServiceImpl  implements ArticleService{
 		return articleMapper.newList(i);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public PageInfo<Article> hotList(int page) {
 		// TODO Auto-generated method stub
-		PageHelper.startPage(page, ConstantClass.PAGE_SIZE);
-		return new PageInfo<Article>(articleMapper.hostList());
+		//PageHelper.startPage(page, ConstantClass.PAGE_SIZE);
+		//从redis中查询热门文章
+		List<Article> list = template.opsForList().range("hot_articles", 0, -1);
+		//判断redis中的数据是否为空
+		if (list!=null&&list.size()>0) {
+			System.err.println("从redis中查询了热点文章");
+			return new PageInfo<Article>(list);
+		}
+		//如果为空，从mysql中查询数据，添加到redis并且返回到页面
+		List<Article> mysqlDB = articleMapper.hostList();
+		System.err.println("从mysql中查询了热点文章");
+		template.opsForList().leftPushAll("hot_articles", mysqlDB.toArray());
+		
+		return new PageInfo<Article>(mysqlDB);
 		
 	}
 

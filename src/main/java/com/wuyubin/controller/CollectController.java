@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +21,7 @@ import com.wuyubin.common.MsgResult;
 import com.wuyubin.entity.Collect;
 import com.wuyubin.entity.User;
 import com.wuyubin.service.CollectService;
+import com.wuyubin.service.impl.CollectServiceImpl;
 
 /**
  *  收藏
@@ -62,6 +64,13 @@ public class CollectController {
 	public String add(HttpServletRequest request) {
 		request.setAttribute("collect", new Collect());
 		return "user/collect/add";	 
+	}
+	@RequestMapping("toAdd.do")
+	public String toAdd(Model m){
+		
+		m.addAttribute("collect", new Collect());
+		
+		return "user/collect/add";
 	}
 	
 	
@@ -144,7 +153,34 @@ public class CollectController {
 		// 没有错误跳转到列表页面
 		return "redirect:list";
 	}
-	
-	
+	@RequestMapping("add")
+	public String addCollect(HttpServletRequest request,@Valid@ModelAttribute("collect")Collect collect,BindingResult result){
+		
+		if (!StringUtils.isHttpUrl(collect.getUrl())) {
+			result.rejectValue("url", "", "不是合法的url");
+		}
+		
+		if (result.hasErrors()) {
+			return "user/collect/add";
+		}
+		
+		User loginUser = (User) request.getSession().getAttribute(ConstantClass.USER_KEY);
+		
+		collect.setUserId(loginUser.getId());
+		collectService.addCollect(collect);
+		
+		return "user/collect/list";
+	}
+	@RequestMapping("deleted.do")
+	public boolean deleted(Integer id){
+		try {
+			collectService.deleted(id);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

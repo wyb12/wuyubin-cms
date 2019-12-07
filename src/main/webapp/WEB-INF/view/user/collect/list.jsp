@@ -10,7 +10,7 @@
 
 <div class="table-responsive">
   <table class="table">
-    <caption>友情链接</caption>
+    <caption>我的收藏夹</caption>
     <thead>
       <tr >
         <th>id</th>

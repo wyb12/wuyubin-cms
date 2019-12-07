@@ -1,5 +1,7 @@
 package com.wuyubin.service;
 
+import javax.validation.Valid;
+
 import com.github.pagehelper.PageInfo;
 import com.wuyubin.entity.Collect;
 
@@ -42,5 +44,21 @@ public interface CollectService {
 	 * @return
 	 */
 	int update( Collect collect);
+	/**  
+	* @Title: addCollect  
+	* @Description: TODO  
+	* @param @param collect     
+	* @return void    
+	* @throws  
+	*/
+	void addCollect(Collect collect);
+	/**  
+	* @Title: deleted  
+	* @Description: TODO  
+	* @param @param id     
+	* @return void    
+	* @throws  
+	*/
+	void deleted(Integer id);
 
 }

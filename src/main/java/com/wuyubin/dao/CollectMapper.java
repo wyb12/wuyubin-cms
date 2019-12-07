@@ -54,4 +54,24 @@ public interface CollectMapper {
 	@Delete("DELETE  FROM cms_collect WHERE id=#{value} ")
 	int delete(int id);
 
+	/**  
+	* @Title: addCollect  
+	* @Description: TODO  
+	* @param @param collect     
+	* @return void    
+	* @throws  
+	*/
+	@Insert("INSERT INTO cms_collect VALUES (null,#{userId},#{url},#{name},now()")
+	void addCollect(Collect collect);
+
+	/**  
+	* @Title: deleted  
+	* @Description: TODO  
+	* @param @param id     
+	* @return void    
+	* @throws  
+	*/
+	@Delete("DELETE FROM cms_collect WHERE ID=#{id}")
+	void deleted(Integer id);
+
 }

@@ -53,4 +53,22 @@ public class CollectServiceImpl  implements CollectService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.wuyubin.service.CollectService#addCollect(com.wuyubin.entity.Collect)
+	 */
+	@Override
+	public void addCollect(Collect collect) {
+		// TODO Auto-generated method stub
+		collectMapper.addCollect(collect);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.wuyubin.service.CollectService#deleted(java.lang.Integer)
+	 */
+	@Override
+	public void deleted(Integer id) {
+		// TODO Auto-generated method stub
+		collectMapper.deleted(id);
+	}
+
 }
