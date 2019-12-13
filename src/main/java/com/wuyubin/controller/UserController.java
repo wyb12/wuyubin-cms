@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.wuyubin.common.CmsAssert;
@@ -65,6 +67,9 @@ public class UserController {
 	
 	@Autowired
 	ChannelService channelService;
+	
+	@Autowired
+	private KafkaTemplate<String, String> kafkaTemplate;
 
 	private SimpleDateFormat dateFormat;
 
@@ -190,7 +195,7 @@ public class UserController {
 	public String updateArticle(HttpServletRequest request,int id) {
 		
 		//先删除redis中list
-		template.delete("hot_articles");
+		//template.delete("hot_articles");
 		
 		// 获取文章的详情 用于回显
 		Article article = articleService.getDetailById(id);
@@ -229,6 +234,10 @@ public class UserController {
 		}
 		
 		int result = articleService.update(article);
+		
+		Object articles = JSON.toJSON(article);
+		
+		kafkaTemplate.send("article", "upd="+articles);
 		
 		if(result>0) {
 			// 成功
@@ -284,6 +293,11 @@ public class UserController {
 		article.setUserId(loginUser.getId());
 		
 		int result = articleService.add(article);
+		
+		Object articles = JSON.toJSON(article);
+		
+		kafkaTemplate.send("article", "add="+articles);
+		
 		if(result>0) {
 			return new MsgResult(1, "处理成功",null);
 		}else {
@@ -356,6 +370,8 @@ public class UserController {
 		
 		int result = articleService.delete(id);
 		CmsAssert.AssertTrue(result>0,"文章删除失败");
+		
+		kafkaTemplate.send("article", "del"+id);
 		
 		return new MsgResult(1,"删除成功",null);
 		

@@ -18,6 +18,13 @@
 
 	<!-- redis -->
 	<import resource="classpath:redis.xml"/>
+	
+	<!-- cafka监听收消息 -->
+	<import resource="classpath:consumer.xml"/>
+	
+	<!-- cafka发送消息监听收消息 -->
+	<import resource="classpath:producer.xml"/>
+	
 	<!-- 1、注解扫描器 -->
 	<!-- todo -->
 	<context:component-scan base-package="com.wuyubin" >
