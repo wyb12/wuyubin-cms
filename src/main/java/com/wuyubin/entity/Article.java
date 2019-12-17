@@ -4,38 +4,48 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 
  * @author 吴宇斌
  *
  */
+@Document(indexName = "cms_article",type = "article")
 public class Article implements Serializable {
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 6320126833474686896L;
-	
+
+	@Id
 	private Integer id               ;
 	// 文章标题
+	@Field(analyzer = "ik_smart",index = true,store = true,searchAnalyzer = "ik_smart",type = FieldType.text)
 	private String title            ;
 	// 文章内容
+	@Field(analyzer = "ik_smart",index = true,store = true,searchAnalyzer = "ik_smart",type = FieldType.text)
 	private String content          ;
 	//标题图片的url 地址
 	private String picture          ;
 	// 频道
 	private Integer channelId       ;
+	@JsonIgnore
 	private Channel channel       ;
-	
+
 	private String categoryId      ;
 	// 文章的分类
+	@JsonIgnore
 	private Category category;
-	
-	
+
 	private Integer userId          ;
+	//用戶
+	@JsonIgnore
 	private User user          ;
-	
+
 	// 点击数量
 	private int  hits             ;
 	// 是否为热门文章 1 是  0 否
@@ -44,30 +54,32 @@ public class Article implements Serializable {
 	private int status           ;
 	//是否被删除
 	private int deleted          ;
-	
+
 	//发表时间
 	private Date created          ;
-	
+
 	//最后修改时间
 	private Date updated          ;
-	
+
 	// 评论的数量
 	private int commentCnt       ;
-	
+
 	// 该文章的所有的图片
+	@JsonIgnore
 	private List<Image> imgList;
-	
-	
+
+	//文章类型
+	@JsonIgnore
+	private TypeEnum articleType = TypeEnum.HTML ;
+
 	public List<Image> getImgList() {
 		return imgList;
 	}
-	
+
 	public void setImgList(List<Image> imgList) {
 		this.imgList = imgList;
 	}
-	
-	//文章类型
-	private TypeEnum articleType = TypeEnum.HTML ;
+
 	public Integer getId() {
 		return id;
 	}
@@ -297,11 +309,11 @@ public class Article implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	                                
 
-	
+
+
+
+
+
 
 }

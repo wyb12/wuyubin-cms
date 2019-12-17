@@ -11,7 +11,7 @@
  <script type="text/javascript" src="/resource/kindeditor/kindeditor-all.js"></script>
  <title>有花堪折直须折</title>
  
-<body style="background:#3399FF;">
+<body style="background:white;">
 
 <!-- 导航条 -->
 <nav class="navbar navbar-default" style="background:#000099">
@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 		<div class="col-md-9" id="content" 
-		   style="border:solid;min-height:500px;background-color:#FFFFFF;
+		   style="min-height:500px;background-color:#FFFFFF;
 		   overflow-x:scroll;overflow-y:scroll
 		   ">
 		

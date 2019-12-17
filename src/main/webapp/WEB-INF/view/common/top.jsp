@@ -5,16 +5,16 @@
 
 
   	
-<div class="container-fluid">
+<div class="container-fluid" style="background: white">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header" style="background: white">
       <a class="navbar-brand" href="#">
         <img alt="Brand" src="/resource/images/logo.png">
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background: white">
       <ul class="nav navbar-nav"  >
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -27,9 +27,9 @@
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
       </ul>
       
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" action="/index" method="get">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" name="key" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -63,17 +63,17 @@
   <style>
 		
 		#clsdropDwon a{
-			color:#FF0000;
+			color:blue;
 		}
 		
 		#clsdropDwon a:hover{
-		 	background:#000099;
-			color:#FF9900;
+		 	background:white;
+			color:red;
 			font-size:18px;
 		 }
 		 
 		.register a:hover{
-		 	background:#000099!important;;
+		 	background:white!important;;
 			color:#FF9900!important;;
 			font-size:18px!important;;
 		}

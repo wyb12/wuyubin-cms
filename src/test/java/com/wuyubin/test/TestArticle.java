@@ -1,4 +1,4 @@
-package com.wuyubin.service;
+package com.wuyubin.test;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.github.pagehelper.PageInfo;
 import com.wuyubin.entity.Article;
+import com.wuyubin.service.ArticleService;
 
 public class TestArticle extends TestBase{
 

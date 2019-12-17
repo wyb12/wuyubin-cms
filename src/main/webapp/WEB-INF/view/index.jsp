@@ -29,7 +29,7 @@
 	}
 	
 	div {
-		background: 3399FF;
+		background: white;
 	}
 	
 	.fl{
@@ -42,14 +42,14 @@
 
 </head>
 
-<body style="background:#3399FF;"> 
+<body> 
 	<!-- <audio autoplay="autoplay"   id="myaudio"  loop="loop" preload="auto"  
       src="/resource/audio/jmszl.mp3"/> -->
        
       
       
 	<!-- 导航条 -->
-<nav class="navbar navbar-default" style="background:#000099">
+<nav class="navbar navbar-default">
 	<%@include  file="common/top.jsp" %>
 </nav>
 
@@ -98,17 +98,29 @@
 							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 							<li data-target="#myCarousel" data-slide-to="1"></li>
 							<li data-target="#myCarousel" data-slide-to="2"></li>
+							<li data-target="#myCarousel" data-slide-to="3"></li>
+							<li data-target="#myCarousel" data-slide-to="4"></li>
+							<li data-target="#myCarousel" data-slide-to="5"></li>
 						</ol>   
 						<!-- 轮播（Carousel）项目 -->
 						<div class="carousel-inner thumbnail" style="border-radius:12px;">
 							<div class="item active">
-								<img  class="img-rounded"  src="/resource/images/lunbo1.jpg" style=" border-radius:24px; align:center;width:800px; height:400px;" alt="First slide">
+								<img  class="img-rounded"  src="/resource/images/3.jpg" style=" border-radius:24px; align:center;width:800px; height:400px;" alt="First slide">
 							</div>
 							<div  class="item">
-								<img  class="img-rounded" src="/resource/images/lunbo2.jpg"  style="border-radius:24px;width:800px; height:400px;" alt="Second slide">
+								<img  class="img-rounded" src="/resource/images/2.jpg"  style="border-radius:24px;width:800px; height:400px;" alt="Second slide">
 							</div>
 							<div class="item">
-								<img  class="img-rounded" src="/resource/images/lunbo3.jpg" style="border-radius:24px; width:800px; height:400px;" alt="Third slide">
+								<img  class="img-rounded" src="/resource/images/1.jpg" style="border-radius:24px; width:800px; height:400px;" alt="Third slide">
+							</div>
+							<div class="item">
+								<img  class="img-rounded" src="/resource/images/5.jpg" style="border-radius:24px; width:800px; height:400px;" alt="Fourth slide">
+							</div>
+							<div class="item">
+								<img  class="img-rounded" src="/resource/images/6.jpg" style="border-radius:24px; width:800px; height:400px;" alt="Fifth slide">
+							</div>
+							<div class="item">
+								<img  class="img-rounded" src="/resource/images/7.jpg" style="border-radius:24px; width:800px; height:400px;" alt="Sixth slide">
 							</div>
 						</div>
 						<!-- 轮播（Carousel）导航 -->
@@ -213,7 +225,7 @@
 
 
 <!-- 底部 -->
-<nav class="navbar navbar-default" style="background:#000099">
+<nav class="navbar navbar-default" style="background:white">
  <div class="container-fluid" style="text-align:center">
  	<div class="row" style="margin-top:13px">
  	    <div class="col-md-1"><a href="sohu.com" class="fl"></a></div>

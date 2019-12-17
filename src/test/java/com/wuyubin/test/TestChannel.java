@@ -1,4 +1,4 @@
-package com.wuyubin.service;
+package com.wuyubin.test;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wuyubin.entity.Channel;
+import com.wuyubin.service.ChannelService;
 
 
 public class TestChannel  extends TestBase{

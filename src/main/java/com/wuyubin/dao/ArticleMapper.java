@@ -164,4 +164,13 @@ public interface ArticleMapper {
 	@Select("SELECT * FROM cms_comment WHERE articleId=#{value}")
 	List<Comment> commentlist(int articleId);
 
+	/**  
+	* @Title: findAll  
+	* @Description: TODO  
+	* @param      
+	* @return void    
+	* @throws  
+	*/
+	List<Article> findAll();
+
 }

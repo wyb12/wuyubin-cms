@@ -1,9 +1,10 @@
-package com.wuyubin.service;
+package com.wuyubin.test;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wuyubin.entity.User;
+import com.wuyubin.service.UserService;
 
 public class TestUser  extends TestBase{
 	

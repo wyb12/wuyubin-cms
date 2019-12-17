@@ -7,28 +7,28 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
-	<!-- 扫描器 -->
+	<!--扫描器-->
 	<context:property-placeholder
 		location="classpath:cms.properties" />
 		
-	<!--  todo --> 
+	 <!--todo -->
 	<context:component-scan
 		base-package=" com.wuyubin.controller"></context:component-scan>
-	<!-- 视图解析图 -->
+	<!--视图解析图-->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 配置前缀 -->
+		<!--配置前缀-->
 		<property name="prefix" value="/WEB-INF/view/"></property>
-		<!-- 配置后缀 -->
+		<!--配置后缀-->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
-	<!-- 配置权限的拦截器 -->
+	<!--配置权限的拦截器-->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<!-- 配置拦截的资源 -->
+			<!--配置拦截的资源-->
 			<mvc:mapping path="/**"/>
-			<!-- 配置排除的拦截资源 -->
+			<!--配置排除的拦截资源-->
 			<mvc:exclude-mapping path="/html/**"/>
 			<mvc:exclude-mapping path="/resource/**"/>
 			<mvc:exclude-mapping path="/article/show"/>
@@ -41,19 +41,19 @@
 			<mvc:exclude-mapping path="/user/login"/>
 			<mvc:exclude-mapping path="/user/register"/>
 			<mvc:exclude-mapping path="/user/checkExist"/>
-			<!-- 拦截器的实现类 -->
+			<!--拦截器的实现类-->
 			<bean class="com.wuyubin.web.UserInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	<!-- 上传下载配置 -->	
+	<!--上传下载配置-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>
 		<property name="maxUploadSize" value="10485760000"></property>
 	</bean>
 	
 	<!-- <bean class=""></bean> -->
-	<!-- 不拦截静态资源 -->
+	<!--不拦截静态资源-->
 	<mvc:default-servlet-handler />
 	<!-- mvc注解驱动 -->
 	<mvc:annotation-driven/>

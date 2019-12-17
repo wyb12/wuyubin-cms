@@ -18,6 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="channel" column="channel_id" select="com.wuyubin.dao.ChannelMapper.findById"></association>
 		<association property="category" column="category_id" select="com.wuyubin.dao.CategoryMapper.findById"></association>
 	</resultMap>
+	
+	<select id="findAll" resultMap="articleMapper">
+		SELECT * FROM cms_article WHERE deleted=0 AND status=1
+	</select>
 
 	<select id="newList" resultType="article">
 		SELECT id,title FROM cms_article 

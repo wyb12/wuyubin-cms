@@ -1,4 +1,4 @@
-package com.wuyubin.service;
+package com.wuyubin.test;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
